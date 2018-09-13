@@ -1,0 +1,9 @@
+{% if initiative_order %}
+    <ul>
+    {% for character in initiative_order %}
+        <li><a href="{% url 'combat:detail' character.id %}">{{ character.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No characters exist.</p>
+{% endif %}
