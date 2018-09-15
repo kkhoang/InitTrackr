@@ -1,0 +1,9 @@
+{% if 0hp %}
+    <ul>
+    {% for character in 0hp %}
+        <li><a href="{% url 'combat:detail' character.id %}">{{ character.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No characters are in the archive.</p>
+{% endif %}

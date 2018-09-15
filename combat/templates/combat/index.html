@@ -1,9 +1,12 @@
 {% if initiative_order %}
     <ul>
     {% for character in initiative_order %}
-        <li><a href="{% url 'combat:detail' character.id %}">{{ character.name }}</a></li>
+        <li><a href="{% url 'combat:detail' character.id %}">{{ character.name }}</a> {{ character.initiative }}</li>
     {% endfor %}
     </ul>
 {% else %}
     <p>No characters exist.</p>
 {% endif %}
+<a href="{% url 'combat:new' %}">ADD NEW CHARACTER</a>
+<a href="{% url 'combat:archive' %}">ARCHIVE</a>
+
