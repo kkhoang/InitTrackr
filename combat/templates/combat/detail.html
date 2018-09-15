@@ -1,1 +1,22 @@
-{{ character }}
+<h1>{{ character.name }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'combat:change' character.id %}" method="post">
+{% csrf_token %}
+<fieldset>
+    <label for="perception">Passive Perception:</label>
+    <input type="number" name="perception" id="perception" value="{{ character.perception }}">
+    <br>
+    <label for="armorclass">Armor Class:</label>
+    <input type="number" name="armorclass" id="armorclass" value="{{ character.armorclass }}">
+    <br>
+    <label for="hitpoints">Hit Points:</label>
+    <input type="number" name="hitpoints" id="hitpoints" value="{{ character.hitpoints }}">
+    <br>
+    <label for="initiative">Initiative:</label>
+    <input type="number" name="initiative" id="initiative" value="{{ character.initiative }}">
+    <input type="submit" name='action' value="Change">
+</fieldset>
+</form>
+<a href="{% url 'combat:delete' character.id %}">DELETE</a>
