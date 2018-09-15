@@ -1,0 +1,20 @@
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'combat:add' %}" method="post">
+{% csrf_token %}
+<fieldset>
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name">
+    <br>
+    <label for="perception">Passive Perception:</label>
+    <input type="number" name="perception" id="perception" placeholder="10+Perception Modifier" value=10>
+    <br>
+    <label for="armorclass">Armor Class:</label>
+    <input type="number" name="armorclass" id="armorclass" value=10>
+    <br>
+    <label for="hitpoints">Hit Points:</label>
+    <input type="number" name="hitpoints" id="hitpoints" value=0>
+    <br>
+    <input type="submit" value="Add">
+</fieldset>
+</form>
