@@ -1,12 +1,25 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'combat/style.css' %}">
+
 {% if initiative_order %}
     <ul>
     {% for character in initiative_order %}
-        <li><a href="{% url 'combat:detail' character.id %}">{{ character.name }}</a> {{ character.initiative }}</li>
+        <fieldset>
+            <legend><a id="character" href="{% url 'combat:detail' character.id %}">{{ character.name }}</a></legend> 
+            <ul id="stats">
+            <li>AC: {{ character.armorclass }}</li>
+            <li>HP: {{ character.hitpoints }}</li>
+            <li>IN: {{ character.initiative }}</li>
+            <li>PP: {{ character.perception }}</li>
+            </ul>
+        </fieldset>
     {% endfor %}
     </ul>
 {% else %}
     <p>No characters exist.</p>
 {% endif %}
-<a href="{% url 'combat:new' %}">ADD NEW CHARACTER</a>
-<a href="{% url 'combat:archive' %}">ARCHIVE</a>
-
+<ul id="links">
+<li><a id="links" href="{% url 'combat:new' %}">ADD NEW CHARACTER</a></li>
+<li><a id="links" href="{% url 'combat:archive' %}">ARCHIVE</a></li>
+</ul>

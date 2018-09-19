@@ -1,3 +1,7 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'combat/style.css' %}">
+
 <h1>{{ character.name }}</h1>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
@@ -16,7 +20,8 @@
     <br>
     <label for="initiative">Initiative:</label>
     <input type="number" name="initiative" id="initiative" value="{{ character.initiative }}">
+    <br>
     <input type="submit" name='action' value="Change">
 </fieldset>
 </form>
-<a href="{% url 'combat:delete' character.id %}">DELETE</a>
+<a id="links" href="{% url 'combat:delete' character.id %}">DELETE</a>
